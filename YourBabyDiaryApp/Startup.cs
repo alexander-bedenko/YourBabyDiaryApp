@@ -1,4 +1,3 @@
-using System.Runtime.InteropServices;
 using AutoMapper;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
@@ -13,6 +12,7 @@ using YourBabyDiary.BLL.Interfaces;
 using YourBabyDiary.BLL.Services;
 using YourBabyDiary.DAL.EF;
 using YourBabyDiary.DAL.Interfaces;
+using YourBabyDiaryApp.Infrastructure;
 
 namespace YourBabyDiaryApp
 {
@@ -29,13 +29,11 @@ namespace YourBabyDiaryApp
         public void ConfigureServices(IServiceCollection services)
         {
             // Auto Mapper Configurations
-            var mappingConfig = new MapperConfiguration(mc =>
+            Mapper.Initialize(x =>
             {
-                mc.AddProfile(new AutoMapperWebProfile());
+                AutoMapperWebConfig.ConfigAction.Invoke(x);
+                AutoMapperBllConfig.ConfigAction.Invoke(x);
             });
-
-            IMapper mapper = mappingConfig.CreateMapper();
-            services.AddSingleton(mapper);
 
             services.AddMvc();
             services.AddMvc().AddControllersAsServices();

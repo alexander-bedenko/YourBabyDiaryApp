@@ -8,8 +8,8 @@ namespace YourBabyDiary.BLL.Services
 {
     public class EventService : CrudService<Event, EventDto>, IEventService
     {
-        public EventService(IUnitOfWork uow, IMapper mapper)
-            : base(uow, mapper)
+        public EventService(IUnitOfWork uow)
+            : base(uow)
         {
         }
     }

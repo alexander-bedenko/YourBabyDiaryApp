@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using YourBabyDiary.BLL.Dtos;
 using YourBabyDiary.BLL.Interfaces;
 using YourBabyDiaryApp.Model;
 
@@ -15,18 +16,16 @@ namespace YourBabyDiaryApp.Controllers
     public class ParentController : ControllerBase
     {
         private readonly IParentService _parentService;
-        private readonly IMapper _mapper;
 
-        public ParentController(IParentService parentService, IMapper mapper)
+        public ParentController(IParentService parentService)
         {
             _parentService = parentService;
-            _mapper = mapper;
         }
 
         [HttpGet]
         public Parent Get()
         {
-            return _mapper.Map<Parent>(_parentService.GetParent("zylon@mail.ru"));
+            return Mapper.Map<Parent>(_parentService.GetParent("zylon@mail.ru"));
         }
     }
 }

@@ -10,8 +10,8 @@ namespace YourBabyDiary.BLL.Services
 {
     public class ParentService : BaseService, IParentService
     {
-        public ParentService(IUnitOfWork uow, IMapper mapper)
-            : base(uow, mapper)
+        public ParentService(IUnitOfWork uow)
+            : base(uow)
         {
         }
 
@@ -25,19 +25,19 @@ namespace YourBabyDiary.BLL.Services
                 return null;
             }
 
-            return _mapper.Map<ParentDto>(parent);
+            return Mapper.Map<ParentDto>(parent);
         }
 
         public ParentDto GetParent(string email)
         {
             var user = _uow.Repository<Parent>().Get(u => u.Email == email);
-            return _mapper.Map<Parent, ParentDto>(user);
+            return Mapper.Map<Parent, ParentDto>(user);
         }
 
         public async Task RegisterUser(ParentDto userDto)
         {
             userDto.Password = HashProvider.Hash(userDto.Password);
-            var regUser = _mapper.Map<Parent>(userDto);
+            var regUser = Mapper.Map<Parent>(userDto);
             await _uow.Repository<Parent>().Create(regUser);
             await _uow.Commit();
         }
