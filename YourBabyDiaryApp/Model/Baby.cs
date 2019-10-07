@@ -1,9 +1,9 @@
 ﻿using System;
-using YourBabyDiary.BLL.Enums;
+using YourBabyDiaryApp.Enums;
 
-namespace YourBabyDiary.BLL.Dtos
+namespace YourBabyDiaryApp.Model
 {
-    public class BabyDto: BaseDto
+    public class Baby
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }

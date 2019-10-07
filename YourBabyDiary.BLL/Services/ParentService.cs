@@ -8,9 +8,9 @@ using YourBabyDiary.DAL.Interfaces;
 
 namespace YourBabyDiary.BLL.Services
 {
-    public class UserService : BaseService, IParentService
+    public class ParentService : BaseService, IParentService
     {
-        public UserService(IUnitOfWork uow, IMapper mapper)
+        public ParentService(IUnitOfWork uow, IMapper mapper)
             : base(uow, mapper)
         {
         }

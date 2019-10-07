@@ -1,10 +1,9 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using YourBabyDiary.DAL.Enums;
+﻿using System.ComponentModel.DataAnnotations;
+using YourBabyDiaryApp.Enums;
 
-namespace YourBabyDiary.BLL.Dtos
+namespace YourBabyDiaryApp.Model
 {
-    public class ParentDto: BaseDto
+    public class Parent
     {
         [Required]
         public string Email { get; set; }
